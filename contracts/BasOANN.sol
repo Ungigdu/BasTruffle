@@ -1,6 +1,5 @@
 pragma solidity >=0.5.0;
 
-import "./safemath.sol";
 import "./owned.sol";
 import "./BasOwnership.sol";
 import "./BasAsset.sol";
@@ -129,7 +128,7 @@ contract BasOANN is owned {
                 cost = BROOT_GAS.mul(durationInYear);
             }
             if (isCustomed) {
-                cost += CUSTOMED_PRICE_GAS;
+                cost  = cost.add(CUSTOMED_PRICE_GAS);
             }
         }
     }

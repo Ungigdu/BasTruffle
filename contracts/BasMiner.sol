@@ -66,7 +66,7 @@ contract BasMiner is owned{
     }
 
     function _a_changeRootSetting(uint256 admin, uint256 burn, uint256 miner) Admin external{
-        require ((admin + burn + miner) <= 100,"error sum up");
+        require ((admin.add(burn).add(miner)) <= 100,"error sum up");
         rootSetting.toAdmin = admin;
         rootSetting.toBurn = burn;
         rootSetting.toMiner = miner;
@@ -75,7 +75,7 @@ contract BasMiner is owned{
     }
     
     function _a_changeDefaultSubSetting(uint256 admin, uint256 burn, uint256 miner, uint256 root) Admin external{
-        require ((admin + burn + miner + root) <= 100,"error sum up");
+        require ((admin.add(burn).add(miner).add(root)) <= 100,"error sum up");
         defaultSubSetting.toAdmin = admin;
         defaultSubSetting.toBurn = burn;
         defaultSubSetting.toMiner = miner;
@@ -84,7 +84,7 @@ contract BasMiner is owned{
     }
     
     function _a_changeSelfSubSetting(uint256 admin, uint256 burn, uint256 miner, uint256 root) Admin external {
-        require ((admin + burn + miner + root) <= 100,"error sum up");
+        require ((admin.add(burn).add(miner).add(root)) <= 100,"error sum up");
         selfSubSetting.toAdmin = admin;
         selfSubSetting.toBurn = burn;
         selfSubSetting.toMiner = miner;
@@ -93,7 +93,7 @@ contract BasMiner is owned{
     }
     
     function _a_changeCustomedSubSetting(uint256 admin, uint256 burn, uint256 miner, uint256 root) Admin external{
-        require ((admin + burn + miner + root) <= 100,"error sum up");
+        require ((admin.add(burn).add(miner).add(root)) <= 100,"error sum up");
         customedSubSetting.toAdmin = admin;
         customedSubSetting.toBurn = burn;
         customedSubSetting.toMiner = miner;

@@ -11,9 +11,7 @@ contract BasContact {
 
     mapping(address=>Contact) public OwnerContact;
 
-    constructor() public{
-
-    }
+    constructor() public{}
     
     function SetContact(string calldata email,
                     string calldata url,
@@ -32,18 +30,18 @@ contract BasContact {
     }
 
     function SetEmail(string calldata email) external{
-        OwnerContact[msg.sender].email= email;
+        OwnerContact[msg.sender].email = email;
     }
 
     function SetURL(string calldata url) external{
-        OwnerContact[msg.sender].url= url;
+        OwnerContact[msg.sender].url = url;
     }
 
     function SetPhone(string calldata phone) external{
-        OwnerContact[msg.sender].phone= phone;
+        OwnerContact[msg.sender].phone = phone;
     }
 
     function SetLocation(string calldata location) external{
-        OwnerContact[msg.sender].location= location;
+        OwnerContact[msg.sender].location = location;
     }
 }

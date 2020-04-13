@@ -4,6 +4,7 @@ import "./ERC20.sol";
 import "./BasOwned.sol";
 
 contract BasMarket is BasOwned {
+    using SafeMath for uint256;
     ERC20 public t;
     uint256 public constant AT_LEAST_REMAIN_TIME = 7 days;
 
@@ -49,7 +50,7 @@ contract BasMarket is BasOwned {
     function AddToSells(bytes32 nameHash, uint256 price) external Allowed(nameHash){
         require(!_sellOrderExist(msg.sender,nameHash), "record exists");
         require(price > 0, "price can't be zero");
-        require(o.expirationOf(nameHash) > now + AT_LEAST_REMAIN_TIME,"expiration less than 7 days");
+        require(o.expirationOf(nameHash) > now.add(AT_LEAST_REMAIN_TIME),"expiration less than 7 days");
         SellOrders[msg.sender][nameHash] = price;
         emit SellAdded(nameHash, msg.sender, price);
     }
